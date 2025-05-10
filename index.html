@@ -11,6 +11,7 @@
 
 <div>
   <button onclick="addLine()" id="addNewLine">Add New Line</button>
+  <button onclick="updateRoutes()" id="updateRoutes">Update Routes</button>
   <button onclick="resetData()" id="reset">Reset</button>
 </div>
 
@@ -135,11 +136,43 @@
             });
   }
 
+  function updateRoutes() {
+    fetch('routes.json')
+            .then(response => response.json())
+            .then(newData => {
+              // Compare old data with new data
+              newData.forEach((newLine, i) => {
+                if (data[i]) {
+                  newLine.routes.forEach((newRoute, j) => {
+                    const existingRoute = data[i].routes[j];
+                    // Check if the route has changed (name, grade)
+                    if (!existingRoute || existingRoute.name !== newRoute.name || existingRoute.grade !== newRoute.grade) {
+                      // If the route has changed, reset its "done" status (unchecked)
+                      data[i].routes[j] = { ...newRoute, done: false };
+                    } else {
+                      // If the route hasn't changed, keep its "done" status
+                      data[i].routes[j] = { ...existingRoute };
+                    }
+                  });
+                } else {
+                  // If the line doesn't exist, create it
+                  data[i] = { routes: newLine.routes.map(route => ({ ...route, done: false })) };
+                }
+              });
+              saveData();
+              render();
+            })
+            .catch(err => {
+              console.error("Failed to load routes:", err);
+            });
+  }
+
   if (!localStorage.getItem('routeData')) {
     loadSeedData();
   } else {
     render();
   }
 </script>
+
 </body>
 </html>
