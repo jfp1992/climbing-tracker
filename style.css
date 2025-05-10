@@ -37,7 +37,7 @@ button:hover {
 /* Line block */
 .line {
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 1px;
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
@@ -83,7 +83,7 @@ button:hover {
 
   .line button#addRoute {
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 0;
   }
 }
 
@@ -98,7 +98,7 @@ button:hover {
 
 .route-table th,
 .route-table td {
-  padding: 0.75rem 1rem;
+  padding: 1rem 2em;
   text-align: left;
   word-wrap: break-word;
   vertical-align: middle;
