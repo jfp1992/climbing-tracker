@@ -1,16 +1,212 @@
 [
   {
-    "line": 1,
     "routes": [
-      { "name": "Blue", "grade": "5a", "done": false },
+      { "name": "Red", "grade": "4a", "done": false },
+      { "name": "Blue", "grade": "5b", "done": false },
+      { "name": "Green", "grade": "6a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Purple", "grade": "5a", "done": false },
+      { "name": "Pink", "grade": "6c", "done": false },
+      { "name": "Sand", "grade": "7a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Black", "grade": "6a", "done": false },
+      { "name": "Mint", "grade": "5c", "done": false },
+      { "name": "Yellow", "grade": "4c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Orange", "grade": "6b", "done": false },
+      { "name": "Red", "grade": "7a", "done": false },
+      { "name": "Blue", "grade": "8a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Green", "grade": "4b", "done": false },
+      { "name": "Purple", "grade": "5a", "done": false },
+      { "name": "Pink", "grade": "6b", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Sand", "grade": "5c", "done": false },
+      { "name": "Black", "grade": "6c", "done": false },
+      { "name": "Mint", "grade": "7b", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Yellow", "grade": "6a", "done": false },
+      { "name": "Orange", "grade": "4a", "done": false },
+      { "name": "Red", "grade": "5a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Blue", "grade": "6b", "done": false },
+      { "name": "Green", "grade": "6c", "done": false },
+      { "name": "Purple", "grade": "7a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Pink", "grade": "4a", "done": false },
+      { "name": "Sand", "grade": "4c", "done": false },
+      { "name": "Black", "grade": "5c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Mint", "grade": "6a", "done": false },
+      { "name": "Yellow", "grade": "7c", "done": false },
+      { "name": "Orange", "grade": "8a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Red", "grade": "6b", "done": false },
+      { "name": "Blue", "grade": "6a", "done": false },
+      { "name": "Green", "grade": "5b", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Purple", "grade": "5a", "done": false },
+      { "name": "Pink", "grade": "4c", "done": false },
+      { "name": "Sand", "grade": "6b", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Black", "grade": "5b", "done": false },
+      { "name": "Mint", "grade": "6a", "done": false },
+      { "name": "Yellow", "grade": "7a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Orange", "grade": "5c", "done": false },
+      { "name": "Red", "grade": "7b", "done": false },
+      { "name": "Blue", "grade": "6c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Green", "grade": "4b", "done": false },
+      { "name": "Purple", "grade": "5c", "done": false },
+      { "name": "Pink", "grade": "6a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Sand", "grade": "7a", "done": false },
+      { "name": "Black", "grade": "5a", "done": false },
       { "name": "Mint", "grade": "6b", "done": false }
     ]
   },
   {
-    "line": 2,
+    "routes": [
+      { "name": "Yellow", "grade": "5c", "done": false },
+      { "name": "Orange", "grade": "6c", "done": false },
+      { "name": "Red", "grade": "4a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Blue", "grade": "5a", "done": false },
+      { "name": "Green", "grade": "6a", "done": false },
+      { "name": "Purple", "grade": "7c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Pink", "grade": "6b", "done": false },
+      { "name": "Sand", "grade": "4a", "done": false },
+      { "name": "Black", "grade": "5c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Mint", "grade": "6a", "done": false },
+      { "name": "Yellow", "grade": "7a", "done": false },
+      { "name": "Orange", "grade": "8a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Red", "grade": "6b", "done": false },
+      { "name": "Blue", "grade": "5a", "done": false },
+      { "name": "Green", "grade": "6c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Purple", "grade": "5c", "done": false },
+      { "name": "Pink", "grade": "6b", "done": false },
+      { "name": "Sand", "grade": "7a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Black", "grade": "6a", "done": false },
+      { "name": "Mint", "grade": "5b", "done": false },
+      { "name": "Yellow", "grade": "6b", "done": false }
+    ]
+  },
+  {
     "routes": [
       { "name": "Orange", "grade": "6a", "done": false },
-      { "name": "Pink", "grade": "6a", "done": false }
+      { "name": "Red", "grade": "7a", "done": false },
+      { "name": "Blue", "grade": "4c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Green", "grade": "5c", "done": false },
+      { "name": "Purple", "grade": "6b", "done": false },
+      { "name": "Pink", "grade": "6c", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Sand", "grade": "5b", "done": false },
+      { "name": "Black", "grade": "6a", "done": false },
+      { "name": "Mint", "grade": "7b", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Yellow", "grade": "5c", "done": false },
+      { "name": "Orange", "grade": "6a", "done": false },
+      { "name": "Red", "grade": "6b", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Blue", "grade": "6c", "done": false },
+      { "name": "Green", "grade": "5a", "done": false },
+      { "name": "Purple", "grade": "4a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Pink", "grade": "5c", "done": false },
+      { "name": "Sand", "grade": "6b", "done": false },
+      { "name": "Black", "grade": "7a", "done": false }
+    ]
+  },
+  {
+    "routes": [
+      { "name": "Mint", "grade": "6a", "done": false },
+      { "name": "Yellow", "grade": "6b", "done": false },
+      { "name": "Orange", "grade": "7c", "done": false }
     ]
   }
 ]
