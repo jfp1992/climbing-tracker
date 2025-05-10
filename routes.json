@@ -1,14 +1,14 @@
 [
   {
     "line": 1,
-    "climbs": [
+    "routes": [
       { "name": "Blue", "grade": "5a", "done": false },
       { "name": "Mint", "grade": "6b", "done": false }
     ]
   },
   {
     "line": 2,
-    "climbs": [
+    "routes": [
       { "name": "Orange", "grade": "6a", "done": false },
       { "name": "Pink", "grade": "6a", "done": false }
     ]
