@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climbing Tracker</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; max-width: 600px; margin: auto; }
+    .line { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; }
+    .climb { display: flex; align-items: center; justify-content: space-between; margin: 0.5rem 0; }
+    .completed-text { text-decoration: line-through; color: green; }
+    button { margin-top: 0.5rem; }
+    label { flex-grow: 1; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Climbing Tracker</h1>
+
+  <div>
+    <button onclick="addLine()">Add New Line</button>
+  </div>
+
+  <div id="lines"></div>
+
+  <script>
+    let data = JSON.parse(localStorage.getItem('climbData')) || [];
+
+    function saveData() {
+      localStorage.setItem('climbData', JSON.stringify(data));
+    }
+
+    function render() {
+      const container = document.getElementById('lines');
+      container.innerHTML = '';
+      data.forEach((line, i) => {
+        const lineDiv = document.createElement('div');
+        lineDiv.className = 'line';
+        lineDiv.innerHTML = `
+          <h2>Line ${i + 1}</h2>
+          <div>
+            <input placeholder="Climb name" id="climbName-${i}" />
+            <input placeholder="Grade" id="climbGrade-${i}" />
+            <button onclick="addClimb(${i})">Add Climb</button>
+          </div>
+          <div>${line.climbs.map((climb, j) => `
+            <div class="climb">
+              <label>
+                <input type="checkbox" onchange="toggleComplete(${i}, ${j})" ${climb.done ? 'checked' : ''} />
+                <span class="${climb.done ? 'completed-text' : ''}">${climb.name} (${climb.grade})</span>
+              </label>
+              <button onclick="removeClimb(${i}, ${j})">🗑️</button>
+            </div>
+          `).join('')}</div>
+        `;
+        container.appendChild(lineDiv);
+      });
+    }
+
+    function addLine() {
+      data.push({ climbs: [] });
+      saveData();
+      render();
+    }
+
+    function addClimb(lineIndex) {
+      const nameEl = document.getElementById(`climbName-${lineIndex}`);
+      const gradeEl = document.getElementById(`climbGrade-${lineIndex}`);
+      const name = nameEl.value.trim();
+      const grade = gradeEl.value.trim();
+      if (!name || !grade) return;
+      data[lineIndex].climbs.push({ name, grade, done: false });
+      nameEl.value = '';
+      gradeEl.value = '';
+      saveData();
+      render();
+    }
+
+    function toggleComplete(lineIndex, climbIndex) {
+      data[lineIndex].climbs[climbIndex].done = !data[lineIndex].climbs[climbIndex].done;
+      saveData();
+      render();
+    }
+
+    function removeClimb(lineIndex, climbIndex) {
+      data[lineIndex].climbs.splice(climbIndex, 1);
+      saveData();
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
