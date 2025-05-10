@@ -3,40 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Climbing Tracker</title>
+  <title>Route Tracker</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    #confirmationDialog {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    #confirmationDialog .dialog {
-      background: white;
-      padding: 20px;
-      border-radius: 5px;
-      text-align: center;
-      max-width: 400px;
-      margin: auto;
-    }
-    #confirmationDialog button {
-      margin: 10px;
-    }
-  </style>
 </head>
 <body>
-<h1>Climbing Tracker</h1>
+<h1>Route Tracker</h1>
 
 <div>
-  <button onclick="addLine()">Add New Line</button>
-  <button onclick="resetData()">Reset</button> <!-- Reset button -->
+  <button onclick="addLine()" id="addNewLine">Add New Line</button>
+  <button onclick="resetData()" id="reset">Reset</button>
 </div>
 
 <div id="lines"></div>
@@ -45,20 +20,18 @@
 <div id="confirmationDialog">
   <div class="dialog">
     <p>Are you sure you want to reset all data?</p>
-    <button onclick="confirmReset()">Yes</button>
-    <button onclick="cancelReset()">No</button>
+    <button onclick="confirmReset()" id="confirmYes">Yes</button>
+    <button onclick="cancelReset()" id="confirmNo">No</button>
   </div>
 </div>
 
 <script>
-  let data = JSON.parse(localStorage.getItem('climbData')) || [];
+  let data = JSON.parse(localStorage.getItem('routeData')) || [];
 
-  // Function to save data to local storage
   function saveData() {
-    localStorage.setItem('climbData', JSON.stringify(data));
+    localStorage.setItem('routeData', JSON.stringify(data));
   }
 
-  // Function to render the data
   function render() {
     const container = document.getElementById('lines');
     container.innerHTML = '';
@@ -68,107 +41,104 @@
       lineDiv.innerHTML = `
           <h2>Line ${i + 1}</h2>
           <div>
-            <input placeholder="Climb name" id="climbName-${i}" />
-            <input placeholder="Grade" id="climbGrade-${i}" />
-            <button onclick="addClimb(${i})">Add Climb</button>
+            <input placeholder="Route name" id="routeName-${i}" />
+            <input placeholder="Grade" id="routeGrade-${i}" />
+            <button onclick="addRoute(${i})" id="addRoute">+</button>
           </div>
-          <div>${line.climbs.map((climb, j) => `
-            <div class="climb">
-              <span class="${climb.done ? 'completed' : ''}" onclick="toggleComplete(${i}, ${j})">
-                ${climb.name} (${climb.grade})
-              </span>
-              <button onclick="removeClimb(${i}, ${j})">🗑️</button>
-            </div>
-          `).join('')}</div>
+          <table class="route-table">
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Difficulty</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${line.routes.map((route, j) => `
+                <tr class="route">
+                  <td class="${route.done ? 'completed' : ''}" onclick="toggleComplete(${i}, ${j})">${route.name}</td>
+                  <td>${route.grade}</td>
+                  <td><button onclick="removeRoute(${i}, ${j})">🗑️</button></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
         `;
       container.appendChild(lineDiv);
     });
   }
 
-  // Function to add a new line
   function addLine() {
-    data.push({ climbs: [] });
+    data.push({ routes: [] });
     saveData();
     render();
   }
 
-  // Function to add a new climb to a line
-  function addClimb(lineIndex) {
-    const nameEl = document.getElementById(`climbName-${lineIndex}`);
-    const gradeEl = document.getElementById(`climbGrade-${lineIndex}`);
+  function addRoute(lineIndex) {
+    const nameEl = document.getElementById(`routeName-${lineIndex}`);
+    const gradeEl = document.getElementById(`routeGrade-${lineIndex}`);
     const name = nameEl.value.trim();
     const grade = gradeEl.value.trim();
 
-    if (!name || !grade) return; // Prevent adding empty climbs
+    if (!name || !grade) return;
 
-    data[lineIndex].climbs.push({ name, grade, done: false });
+    data[lineIndex].routes.push({ name, grade, done: false });
     nameEl.value = '';
     gradeEl.value = '';
     saveData();
     render();
   }
 
-  // Function to toggle the completion state of a climb
-  function toggleComplete(lineIndex, climbIndex) {
-    data[lineIndex].climbs[climbIndex].done = !data[lineIndex].climbs[climbIndex].done;
+  function toggleComplete(lineIndex, routeIndex) {
+    data[lineIndex].routes[routeIndex].done = !data[lineIndex].routes[routeIndex].done;
     saveData();
     render();
   }
 
-  // Function to remove a climb from a line
-  function removeClimb(lineIndex, climbIndex) {
-    data[lineIndex].climbs.splice(climbIndex, 1);
+  function removeRoute(lineIndex, routeIndex) {
+    data[lineIndex].routes.splice(routeIndex, 1);
     saveData();
     render();
   }
 
-  // Show the confirmation dialog
   function resetData() {
     document.getElementById('confirmationDialog').style.display = 'flex';
   }
 
-  // Perform reset when confirmed
   function confirmReset() {
-    localStorage.removeItem('climbData'); // Clear localStorage
-    data = []; // Reset data array
-    console.log("Data has been reset!");
-    loadSeedData(); // Load the seed data after reset
-    render(); // Re-render the app after reset
-    document.getElementById('confirmationDialog').style.display = 'none'; // Hide dialog
+    localStorage.removeItem('routeData');
+    data = [];
+    loadSeedData();
+    render();
+    document.getElementById('confirmationDialog').style.display = 'none';
   }
 
-  // Cancel reset
   function cancelReset() {
-    console.log("Reset cancelled.");
-    document.getElementById('confirmationDialog').style.display = 'none'; // Hide dialog
+    document.getElementById('confirmationDialog').style.display = 'none';
   }
 
-  // Function to load seed data from routes.json (or a fallback if it's unavailable)
   function loadSeedData() {
     fetch('routes.json')
             .then(response => response.json())
             .then(seedData => {
               data = seedData;
-              saveData(); // Save seed data to localStorage
-              render(); // Render the seed data immediately
+              saveData();
+              render();
             })
             .catch(err => {
-              console.error('Error loading routes.json:', err);
-              // If there's an error loading the seed data, use default fallback
               data = [
-                { climbs: [{ name: 'Default Climb 1', grade: '5.10a', done: false }] },
-                { climbs: [{ name: 'Default Climb 2', grade: '5.12b', done: false }] }
+                { routes: [{ name: 'Default Route 1', grade: '5.10a', done: false }] },
+                { routes: [{ name: 'Default Route 2', grade: '5.12b', done: false }] }
               ];
               saveData();
               render();
             });
   }
 
-  // Initial render to fetch and display data
-  if (!localStorage.getItem('climbData')) {
-    loadSeedData(); // Load seed data from routes.json if no saved data
+  if (!localStorage.getItem('routeData')) {
+    loadSeedData();
   } else {
-    render(); // Otherwise, just render the stored data
+    render();
   }
 </script>
 </body>
