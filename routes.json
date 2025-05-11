@@ -154,7 +154,7 @@
   {
     "routes": [
       { "name": "pink", "grade": "5c", "done": false },
-      { "name": "purple", "grade": "6b", "done": false }
+      { "name": "purple", "grade": "6b+", "done": false }
     ]
   },
   {
@@ -167,7 +167,7 @@
   {
     "routes": [
       { "name": "green", "grade": "4b", "done": false },
-      { "name": "yellow", "grade": "6a", "done": false },
+      { "name": "yellow", "grade": "6a+", "done": false },
       { "name": "blue", "grade": "6b", "done": false }
     ]
   },
