@@ -10,7 +10,7 @@ export function saveData(data) {
 export async function resetData() {
   localStorage.removeItem("routeData");
   try {
-    const res = await fetch("/data/routes.json");
+    const res = await fetch("/climbing-tracker/data/routes.json");
     const seedData = await res.json();
     saveData(seedData);
     return seedData;
@@ -26,7 +26,7 @@ export async function resetData() {
 
 export async function updateData(currentData) {
   try {
-    const res = await fetch("/data/routes.json");
+    const res = await fetch("/climbing-tracker/data/routes.json");
     const newData = await res.json();
 
     newData.forEach((room, i) => {
