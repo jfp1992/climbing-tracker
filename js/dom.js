@@ -1,4 +1,4 @@
-import { addRoute, toggleComplete, removeRoute } from "./routes";
+import { addRoute, toggleComplete, removeRoute } from "./routes.js";
 
 export function render(data) {
   const container = document.getElementById("lines");
