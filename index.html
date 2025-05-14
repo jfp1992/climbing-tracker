@@ -2,177 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Route Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 <h1>Route Tracker</h1>
 
 <div>
-  <button onclick="addLine()" id="addNewLine">Add New Line</button>
-  <button onclick="updateRoutes()" id="updateRoutes">Update Routes</button>
-  <button onclick="resetData()" id="reset">Reset</button>
+  <button id="addNewLine">Add New Line</button>
+  <button id="updateRoutes">Update Routes</button>
+  <button id="reset">Reset</button>
 </div>
 
 <div id="lines"></div>
 
-<!-- Confirmation Dialog -->
 <div id="confirmationDialog">
   <div class="dialog">
     <p>Are you sure you want to reset all data?</p>
-    <button onclick="confirmReset()" id="confirmYes">Yes</button>
-    <button onclick="cancelReset()" id="confirmNo">No</button>
+    <button id="confirmYes">Yes</button>
+    <button id="confirmNo">No</button>
   </div>
 </div>
 
-<script>
-  let data = JSON.parse(localStorage.getItem('routeData')) || [];
-
-  function saveData() {
-    localStorage.setItem('routeData', JSON.stringify(data));
-  }
-
-  function render() {
-    const container = document.getElementById('lines');
-    container.innerHTML = '';
-    data.forEach((line, i) => {
-      const lineDiv = document.createElement('div');
-      lineDiv.className = 'line';
-      lineDiv.innerHTML = `
-          <h2>Line ${i + 1}</h2>
-          <div>
-            <input placeholder="Route name" id="routeName-${i}" />
-            <input placeholder="Grade" id="routeGrade-${i}" />
-            <button onclick="addRoute(${i})" id="addRoute">+</button>
-          </div>
-          <table class="route-table">
-            <thead>
-              <tr>
-                <th>Route</th>
-                <th>Difficulty</th>
-                <th>Remove</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${line.routes.map((route, j) => `
-                <tr class="route">
-                  <td class="${route.done ? 'completed' : ''}" onclick="toggleComplete(${i}, ${j})">${route.name}</td>
-                  <td>${route.grade}</td>
-                  <td><button onclick="removeRoute(${i}, ${j})">🗑️</button></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        `;
-      container.appendChild(lineDiv);
-    });
-  }
-
-  function addLine() {
-    data.push({ routes: [] });
-    saveData();
-    render();
-  }
-
-  function addRoute(lineIndex) {
-    const nameEl = document.getElementById(`routeName-${lineIndex}`);
-    const gradeEl = document.getElementById(`routeGrade-${lineIndex}`);
-    const name = nameEl.value.trim();
-    const grade = gradeEl.value.trim();
-
-    if (!name || !grade) return;
-
-    data[lineIndex].routes.push({ name, grade, done: false });
-    nameEl.value = '';
-    gradeEl.value = '';
-    saveData();
-    render();
-  }
-
-  function toggleComplete(lineIndex, routeIndex) {
-    data[lineIndex].routes[routeIndex].done = !data[lineIndex].routes[routeIndex].done;
-    saveData();
-    render();
-  }
-
-  function removeRoute(lineIndex, routeIndex) {
-    data[lineIndex].routes.splice(routeIndex, 1);
-    saveData();
-    render();
-  }
-
-  function resetData() {
-    document.getElementById('confirmationDialog').style.display = 'flex';
-  }
-
-  function confirmReset() {
-    localStorage.removeItem('routeData');
-    data = [];
-    loadSeedData();
-    render();
-    document.getElementById('confirmationDialog').style.display = 'none';
-  }
-
-  function cancelReset() {
-    document.getElementById('confirmationDialog').style.display = 'none';
-  }
-
-  function loadSeedData() {
-    fetch('routes.json')
-            .then(response => response.json())
-            .then(seedData => {
-              data = seedData;
-              saveData();
-              render();
-            })
-            .catch(err => {
-              data = [
-                { routes: [{ name: 'Default Route 1', grade: '5.10a', done: false }] },
-                { routes: [{ name: 'Default Route 2', grade: '5.12b', done: false }] }
-              ];
-              saveData();
-              render();
-            });
-  }
-
-  function updateRoutes() {
-    fetch('routes.json')
-            .then(response => response.json())
-            .then(newData => {
-              // Compare old data with new data
-              newData.forEach((newLine, i) => {
-                if (data[i]) {
-                  newLine.routes.forEach((newRoute, j) => {
-                    const existingRoute = data[i].routes[j];
-                    // Check if the route has changed (name, grade)
-                    if (!existingRoute || existingRoute.name !== newRoute.name || existingRoute.grade !== newRoute.grade) {
-                      // If the route has changed, reset its "done" status (unchecked)
-                      data[i].routes[j] = { ...newRoute, done: false };
-                    } else {
-                      // If the route hasn't changed, keep its "done" status
-                      data[i].routes[j] = { ...existingRoute };
-                    }
-                  });
-                } else {
-                  // If the line doesn't exist, create it
-                  data[i] = { routes: newLine.routes.map(route => ({ ...route, done: false })) };
-                }
-              });
-              saveData();
-              render();
-            })
-            .catch(err => {
-              console.error("Failed to load routes:", err);
-            });
-  }
-
-  if (!localStorage.getItem('routeData')) {
-    loadSeedData();
-  } else {
-    render();
-  }
-</script>
-
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
