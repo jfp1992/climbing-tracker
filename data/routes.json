@@ -171,18 +171,18 @@
         "name": "Line 9",
         "routes": [
           {
-            "name": "purple",
-            "grade": "4c",
+            "name": "yellow",
+            "grade": "5b",
             "done": false
           },
           {
             "name": "pink",
-            "grade": "6a+",
+            "grade": "5a",
             "done": false
           },
           {
-            "name": "yellow",
-            "grade": "6c+",
+            "name": "black",
+            "grade": "6b",
             "done": false
           }
         ]
@@ -197,12 +197,12 @@
           },
           {
             "name": "blue",
-            "grade": "6a+",
+            "grade": "7a",
             "done": false
           },
           {
-            "name": "orange & black",
-            "grade": "7b",
+            "name": "red",
+            "grade": "7a",
             "done": false
           }
         ]
@@ -211,18 +211,18 @@
         "name": "Line 11",
         "routes": [
           {
-            "name": "pink",
+            "name": "yellow",
             "grade": "5a",
             "done": false
           },
           {
-            "name": "orange",
+            "name": "purple",
             "grade": "6b",
             "done": false
           },
           {
-            "name": "red",
-            "grade": "7a+",
+            "name": "orange",
+            "grade": "6c",
             "done": false
           }
         ]
