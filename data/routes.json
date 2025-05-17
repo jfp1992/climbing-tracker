@@ -237,12 +237,12 @@
           },
           {
             "name": "black",
-            "grade": "5b",
+            "grade": "7a",
             "done": false
           },
           {
-            "name": "yellow",
-            "grade": "6a+",
+            "name": "red",
+            "grade": "7a",
             "done": false
           }
         ]
