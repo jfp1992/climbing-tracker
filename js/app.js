@@ -8,9 +8,9 @@ function init() {
   render(data);
 
   document.getElementById("addNewLine").addEventListener("click", () => {
-    addLine(data);
-    saveData(data);
-    render(data);
+    // addLine(data);
+    // saveData(data);
+    // render(data);
   });
 
   document
