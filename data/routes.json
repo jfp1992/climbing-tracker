@@ -170,14 +170,14 @@
       {
         "name": "Line 9",
         "routes": [
-          {
-            "name": "yellow",
-            "grade": "5b",
+                    {
+            "name": "pink",
+            "grade": "5a",
             "done": false
           },
           {
-            "name": "pink",
-            "grade": "5a",
+            "name": "yellow",
+            "grade": "5b",
             "done": false
           },
           {
@@ -196,13 +196,13 @@
             "done": false
           },
           {
-            "name": "blue",
-            "grade": "7a",
+            "name": "red",
+            "grade": "7a+",
             "done": false
           },
           {
-            "name": "red",
-            "grade": "7a",
+            "name": "blue",
+            "grade": "7c",
             "done": false
           }
         ]
@@ -212,7 +212,7 @@
         "routes": [
           {
             "name": "yellow",
-            "grade": "5a",
+            "grade": "5c",
             "done": false
           },
           {
@@ -221,7 +221,7 @@
             "done": false
           },
           {
-            "name": "orange",
+            "name": "orange/black",
             "grade": "6c",
             "done": false
           }
@@ -237,7 +237,7 @@
           },
           {
             "name": "black",
-            "grade": "7a",
+            "grade": "6c",
             "done": false
           },
           {
@@ -251,18 +251,18 @@
         "name": "Line 13",
         "routes": [
           {
-            "name": "pink",
-            "grade": "4c",
+            "name": "green",
+            "grade": "4b",
+            "done": false
+          },
+          {
+            "name": "brown",
+            "grade": "6b",
             "done": false
           },
           {
             "name": "mint",
-            "grade": "5c+",
-            "done": false
-          },
-          {
-            "name": "purple",
-            "grade": "6a",
+            "grade": "7a",
             "done": false
           }
         ]
@@ -271,18 +271,18 @@
         "name": "Line 14",
         "routes": [
           {
-            "name": "brown",
-            "grade": "4b",
+            "name": "blue",
+            "grade": "5b",
             "done": false
           },
           {
-            "name": "green",
-            "grade": "6a+",
+            "name": "yellow",
+            "grade": "5c",
             "done": false
           },
           {
             "name": "red",
-            "grade": "6c+",
+            "grade": "6b",
             "done": false
           }
         ]
@@ -291,18 +291,18 @@
         "name": "Line 15",
         "routes": [
           {
-            "name": "blue",
-            "grade": "5b",
-            "done": false
-          },
-          {
-            "name": "yellow",
-            "grade": "6a+",
+            "name": "brown",
+            "grade": "5a",
             "done": false
           },
           {
             "name": "black",
-            "grade": "6c+",
+            "grade": "6a",
+            "done": false
+          },
+          {
+            "name": "green",
+            "grade": "6c",
             "done": false
           }
         ]
@@ -311,18 +311,18 @@
         "name": "Line 16",
         "routes": [
           {
-            "name": "green",
+            "name": "pink",
             "grade": "4c",
             "done": false
           },
           {
-            "name": "pink",
-            "grade": "5c+",
+            "name": "blue",
+            "grade": "5b",
             "done": false
           },
           {
-            "name": "mint",
-            "grade": "7b",
+            "name": "red",
+            "grade": "7b+",
             "done": false
           }
         ]
